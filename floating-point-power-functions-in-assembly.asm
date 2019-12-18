@@ -37,14 +37,14 @@ main endp
 
 floatPower PROC, result2: real4, power2: real4, a2: TBYTE, onep: real4
 	FLD power2
-	FBSTP a2
+	FBSTP a2	;moving tbyte into a2 from stack st(0)
 
 	mov ecx, 0
-	mov ecx, dword PTR a2
+	mov ecx, dword PTR a2   ;moving power in ecx as a counter
 
-	FLD onep
+	FLD onep    ;pushing on stack 
 	L1:
-		FMUL result2
+		FMUL result2   ;multiply by value that is in stack st(0) 
 		loop L1
 	ret
 floatPower endp
